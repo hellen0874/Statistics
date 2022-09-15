@@ -14,11 +14,8 @@ public class StatsService {
     // №  2. Средняя сумма продаж
 
     public long getAvgAmount(long[] sales) {
-        long totalAmount = 0;
-        for (long sale : sales) {
-            totalAmount = totalAmount + sale; // сумма значений всех проcмотренных ячеек
-        }
-        long avgAmount = totalAmount / 12; // вычисление среднего значения после окончания цикла - просмотра 12 ячеек
+
+        long avgAmount = getTotalAmount(sales) / 12; // вычисление среднего значения после окончания цикла - просмотра 12 ячеек
         return avgAmount;
     }
 
@@ -57,17 +54,12 @@ public class StatsService {
     // № 5. Кол-во месяцев с продажами ниже среднего
 
     public long getBelowAvgSales(long[] sales) {
-        long totalAmount = 0;
-        for (long sale : sales) {
-            totalAmount = totalAmount + sale; // сумма значений всех проcмотренных ячеек
-        }
-        long avgAmount = totalAmount / 12; // вычисление среднего значения после окончания цикла - просмотра 12 ячеек
 
         long belowAvgMonth = 0; // переменная для количества месяцев, когда продажи ниже среднего
         int month = 0; // переменная для индекса рассматриваемого месяца в массиве
         for (long sale : sales) {
 
-            if (sale < avgAmount) {
+            if (sale < getAvgAmount(sales)) {
                 belowAvgMonth = belowAvgMonth + 1; // добавляем месяц, если в нем продажи ниже среднего
             }
             month = month + 1; // следующий рассматриваемый месяц имеет номер на 1 больше
@@ -78,17 +70,12 @@ public class StatsService {
     // № 6. Кол-во месяцев с продажами выше среднего
 
     public long getAboveAvgSales(long[] sales) {
-        long totalAmount = 0;
-        for (long sale : sales) {
-            totalAmount = totalAmount + sale; // сумма значений всех проcмотренных ячеек
-        }
-        long avgAmount = totalAmount / 12; // вычисление среднего значения после окончания цикла - просмотра 12 ячеек
 
         long aboveAvgMonth = 0;  // переменная для количества месяцев, когда продажи выше среднего
         int month = 0; // переменная для индекса рассматриваемого месяца в массиве
         for (long sale : sales) {
 
-            if (sale < avgAmount) {
+            if (sale > getAvgAmount(sales)) {
                 aboveAvgMonth = aboveAvgMonth + 1; // добавляем месяц, если в нем продажи ниже среднего
             }
             month = month + 1; // следующий рассматриваемый месяц имеет номер на 1 больше
