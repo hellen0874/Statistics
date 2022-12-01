@@ -3,9 +3,9 @@ package ru.netology.stats;
 public class StatsService {
 
     // № 1 Общая сумма продаж
-    public long getTotalAmount(long[] sales) {
-        long totalAmount = 0;
-        for (long sale : sales) {
+    public double getTotalAmount(double[] sales) {
+        double totalAmount = 0;
+        for (double sale : sales) {
             totalAmount = totalAmount + sale;
         }
         return totalAmount;
@@ -13,9 +13,9 @@ public class StatsService {
 
     // №  2. Средняя сумма продаж
 
-    public long getAvgAmount(long[] sales) {
+    public double getAvgAmount(double[] sales) {
 
-        long avgAmount = getTotalAmount(sales) / 12; // вычисление среднего значения после окончания цикла - просмотра 12 ячеек
+        double avgAmount = getTotalAmount(sales) / 12; // вычисление среднего значения после окончания цикла - просмотра 12 ячеек
         return avgAmount;
     }
 
@@ -53,11 +53,11 @@ public class StatsService {
 
     // № 5. Кол-во месяцев с продажами ниже среднего
 
-    public long getBelowAvgSales(long[] sales) {
+    public double getBelowAvgSales(double[] sales) {
 
-        long belowAvgMonth = 0; // переменная для количества месяцев, когда продажи ниже среднего
+        double belowAvgMonth = 0; // переменная для количества месяцев, когда продажи ниже среднего
         int month = 0; // переменная для индекса рассматриваемого месяца в массиве
-        for (long sale : sales) {
+        for (double sale : sales) {
 
             if (sale < getAvgAmount(sales)) {
                 belowAvgMonth = belowAvgMonth + 1; // добавляем месяц, если в нем продажи ниже среднего
@@ -69,11 +69,11 @@ public class StatsService {
 
     // № 6. Кол-во месяцев с продажами выше среднего
 
-    public long getAboveAvgSales(long[] sales) {
+    public double getAboveAvgSales(double[] sales) {
 
         long aboveAvgMonth = 0;  // переменная для количества месяцев, когда продажи выше среднего
         int month = 0; // переменная для индекса рассматриваемого месяца в массиве
-        for (long sale : sales) {
+        for (double sale : sales) {
 
             if (sale > getAvgAmount(sales)) {
                 aboveAvgMonth = aboveAvgMonth + 1; // добавляем месяц, если в нем продажи ниже среднего
