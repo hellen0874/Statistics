@@ -26,7 +26,7 @@ public class StatsServiceTest {
     //для № 2
     @Test
     public void shouldFindAvg() {
-        double [] sales = {8, 15, 13, 15, 17, 20, 19, 20, 7, 14, 19, 18};
+        double[] sales = {8, 15, 13, 15, 17, 20, 19, 20, 7, 14, 19, 18};
         StatsService service = new StatsService();
         // вызываем целевой метод:
         double actual = service.getAvgAmount(sales);
@@ -64,7 +64,7 @@ public class StatsServiceTest {
     }
 
 
-    //для № 5 - теперь проходит?
+    //для № 5
     @Test
     public void shouldFindBelowAvg() {
         double[] sales = {1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12};
@@ -88,7 +88,7 @@ public class StatsServiceTest {
         Assertions.assertEquals(expected, actual);
     }
 
-
+    // для № 6
     @Test
     public void shouldFindAboveAvg() {
         double[] sales = {1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12};
@@ -100,14 +100,4 @@ public class StatsServiceTest {
         Assertions.assertEquals(expected, actual);
     }
 
-    @ParameterizedTest
-    @CsvFileSource(files = "src/test/resources/stats.csv")
-    public void testFromFile(double[] sales) {
-        StatsService service = new StatsService();
-        // вызываем целевой метод:
-        double actual = service.getAboveAvgSales(sales);
-        double expected = 6;
-        // производим проверку (сравниваем ожидаемый и фактический результат):
-        Assertions.assertEquals(expected, actual);
-    }
 }
